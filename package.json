@@ -1,0 +1,35 @@
+{
+    "name": "runtime-labs",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "concurrently \"tsc -p ./tsconfig.json -w\" \"es-dev-server -config=es-dev-server.config.js\"",
+        "build": "rimraf dist && rollup -c rollup.config.js",
+        "start:build": "es-dev-server --root-dir dist --app-index index.html  --open"
+    },
+    "dependencies": {
+        "@webcomponents/webcomponentsjs": "latest",
+        "lit-element": "latest"
+    },
+    "devDependencies": {
+        "@babel/plugin-proposal-optional-chaining": "^7.6.0",
+        "@open-wc/building-rollup": "latest",
+        "@types/animejs": "latest",
+        "@typescript-eslint/eslint-plugin": "^1.12.0",
+        "@typescript-eslint/parser": "^1.12.0",
+        "concurrently": "latest",
+        "connect-history-api-fallback": "latest",
+        "es-dev-server": "latest",
+        "eslint": "^5.16.0",
+        "eslint-config-google": "^0.13.0",
+        "eslint-plugin-mocha": "^5.3.0",
+        "eslint-plugin-wc": "^1.2.0",
+        "lit-analyzer": "^1.1.8",
+        "rimraf": "latest",
+        "rollup": "latest",
+        "rollup-plugin-commonjs": "latest",
+        "rollup-plugin-index-html": "latest",
+        "rollup-plugin-typescript2": "latest",
+        "ts-lit-plugin": "^1.1.8",
+        "typescript": "^3.7.0-dev.20191004"
+    }
+}

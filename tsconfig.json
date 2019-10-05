@@ -1,0 +1,37 @@
+{
+    "compilerOptions": {
+        "plugins": [
+            {
+                "name": "ts-lit-plugin"
+            }
+        ],
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "lib": [
+            "es2017",
+            "dom",
+            "dom.iterable"
+        ],
+        "allowSyntheticDefaultImports": true,
+        "declaration": true,
+        "sourceMap": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "experimentalDecorators": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "noImplicitAny": false,
+        "composite": true,
+        "importHelpers": true,
+        "outDir": "./dev"
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
