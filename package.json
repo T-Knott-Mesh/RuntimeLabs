@@ -1,5 +1,6 @@
 {
     "name": "runtime-labs",
+    "author": "Tsavo Knott",
     "version": "0.0.1",
     "scripts": {
         "dev": "concurrently \"tsc -p ./tsconfig.json -w\" \"es-dev-server -config=es-dev-server.config.js\"",
