@@ -38,4 +38,6 @@ export default class RuntimeLabs extends LitElement {
     addSimpleItem(): void;
     addSimpleItemImmutably(): void;
     addControlledItem(): void;
+    addSimpleItemAtIndex(index: any, foo: any): void;
+    addControlledItemAtIndex(index: any, foo: any): void;
 }

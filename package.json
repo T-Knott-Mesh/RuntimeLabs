@@ -9,7 +9,8 @@
     },
     "dependencies": {
         "@webcomponents/webcomponentsjs": "latest",
-        "lit-element": "latest"
+        "lit-element": "latest",
+        "lit-html": "latest"
     },
     "devDependencies": {
         "@babel/plugin-proposal-optional-chaining": "^7.6.0",

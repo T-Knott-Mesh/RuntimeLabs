@@ -11,7 +11,7 @@
  */
 import { __decorate } from "tslib";
 import { LitElement, customElement, html, property, css } from "lit-element";
-import { repeat } from "lit-html/directives/repeat";
+import { repeat } from 'lit-html/directives/repeat';
 import { RuntimeController, ControlledRuntimeComponent } from './ComponentController';
 let RuntimeLabs = class RuntimeLabs extends LitElement {
     constructor() {
@@ -46,12 +46,23 @@ let RuntimeLabs = class RuntimeLabs extends LitElement {
         const { controlledComponents, items } = this;
         console.log("============ View Rendered =============== ");
         return html `
-        <!-- Rendering 10 Controlled Items With Repeat -->
-            ${repeat(controlledComponents, controlledComponent => controlledComponent.controller.foo, controlledComponent => html `${controlledComponent}`)}
+        <!-- Rendering 10 Controlled Items With Map -->
+        ${controlledComponents.map(controlledComponent => html `${controlledComponent}`)}
+            
 
         <!-- Rendering 10 Controlled Simple Items With Repeat -->
-            ${repeat(items, item => item.foo, ({ foo }) => html `<simple-runtime-component .foo=${foo}></simple-runtime-component>`)}
+        ${repeat(items, item => item.foo, ({ foo }) => html `<simple-runtime-component .foo=${foo}></simple-runtime-component>`)}
         `;
+        // return html`
+        // <!-- Rendering 10 Controlled Items With Repeat -->
+        // ${controlledComponents.map(
+        //     controlledComponent => html`${controlledComponent}`)}
+        // 
+        // 
+        // <!-- Rendering 10 Controlled Simple Items With Map -->
+        // ${items.map(({ foo }) =>
+        // html`<simple-runtime-component .foo=${foo}></simple-runtime-component>`)}
+        // `;
     }
     updateControlledItem(index, foo) {
         this.controllers[index].foo = foo;
@@ -71,14 +82,14 @@ let RuntimeLabs = class RuntimeLabs extends LitElement {
     }
     // Adding to front of list for worst case performance.
     addSimpleItem() {
-        console.log("============ addSimpleItem Called =============== ");
+        // console.log("============ addSimpleItem Called =============== ");
         const old = [...this.items];
         this.items.unshift({ foo: "Added Item" });
         this.requestUpdate("items", old);
     }
     // Adding to front of list for worst case performance.
     addSimpleItemImmutably() {
-        console.log("============ addSimpleItemImmutably Called =============== ");
+        // console.log("============ addSimpleItemImmutably Called =============== ");
         this.items = [
             { foo: "Added Item" },
             ...this.items
@@ -86,12 +97,41 @@ let RuntimeLabs = class RuntimeLabs extends LitElement {
     }
     // Adding to front of list for worst case performance.
     addControlledItem() {
-        console.log("============ addControlledItem Called =============== ");
+        // console.log("============ addControlledItem Called =============== ");
         const old = [...this.controlledComponents];
+        const controller = new RuntimeController({ foo: `Added Item` });
+        this.controllers.unshift(controller);
         this.controlledComponents.unshift(new ControlledRuntimeComponent({
-            controller: new RuntimeController({ foo: `Added Item` })
+            controller
         }));
         this.requestUpdate("controlledComponents", old);
+    }
+    // Adding to front of list for worst case performance.
+    addSimpleItemAtIndex(index, foo) {
+        // console.log("============ addControlledItemAtIndex Called =============== ");
+        const item = this.items[index];
+        this.items = [
+            ...this.items.slice(0, index),
+            { ...item, foo },
+            ...this.items.slice(index, this.items.length)
+        ];
+    }
+    // Adding to front of list for worst case performance.
+    addControlledItemAtIndex(index, foo) {
+        // console.log("============ addControlledItemAtIndex Called =============== ");
+        const controller = new RuntimeController({ foo });
+        this.controllers = [
+            ...this.controllers.slice(0, index),
+            controller,
+            ...this.controllers.slice(index, this.controllers.length)
+        ];
+        this.controlledComponents = [
+            ...this.controlledComponents.slice(0, index),
+            new ControlledRuntimeComponent({
+                controller
+            }),
+            ...this.controlledComponents.slice(index, this.controlledComponents.length)
+        ];
     }
 };
 RuntimeLabs.styles = css `
@@ -100,6 +140,9 @@ RuntimeLabs.styles = css `
             overflow: scroll;
         }
     `;
+__decorate([
+    property({ type: Array })
+], RuntimeLabs.prototype, "controlledComponents", void 0);
 __decorate([
     property({ type: Array })
 ], RuntimeLabs.prototype, "items", void 0);
