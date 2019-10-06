@@ -1,0 +1,27 @@
+(If you create your own Runtime Modules, please do not copy this
+file into it, as these patent grants are specific to the code that
+Tsavo Knott distributes)
+
+Additional IP Rights Grant (Patents)
+
+"This implementation" means the copyrightable works distributed by
+Tsavo Knott as part of the Runtime Framework or Mesh Intelligent Communications.
+
+Tsavo Knott hereby grants to You a perpetual, worldwide, non-exclusive,
+no-charge, royalty-free, irrevocable (except as stated in this section)
+patent license to make, have made, use, offer to sell, sell, import,
+transfer and otherwise run, modify and propagate the contents of this
+implementation of Runtime, where such license applies only to those
+patent claims, both currently owned or controlled by Tsavo Knott and acquired
+in the future, licensable by Tsavo Knott that are necessarily infringed by
+this implementation of Runtime.  This grant does not include claims
+that would be infringed only as a consequence of further modification of
+this implementation.  If you or your agent or exclusive licensee
+institute or order or agree to the institution of patent litigation
+against any entity (including a cross-claim or counterclaim in a
+lawsuit) alleging that this implementation of Runtime or any code
+incorporated within this implementation of Runtime constitutes
+direct or contributory patent infringement, or inducement of patent
+infringement, then any patent rights granted to you under this License
+for this implementation of Runtime shall terminate as of the date
+such litigation is filed.
